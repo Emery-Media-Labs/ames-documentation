@@ -1,6 +1,6 @@
 site_name: AMES — Agent and Machine Exchange Standard
 site_description: Technical specification for permission-aware AI agent exchange documents
-site_url: https://openames.org
+site_url: https://emery-media-labs.github.io/ames-documentation/
 docs_dir: docs
 
 theme:
@@ -22,15 +22,12 @@ theme:
     text: Inter
     code: JetBrains Mono
   features:
-    - navigation.tabs
     - navigation.sections
-    - navigation.expand
     - navigation.top
     - toc.integrate
     - search.suggest
     - search.highlight
     - content.code.copy
-    - content.code.annotate
 
 markdown_extensions:
   - admonition
@@ -43,27 +40,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - tables
   - attr_list
-  - md_in_html
   - toc:
       permalink: true
 
 nav:
-  - Home: index.md
-  - Specification:
-    - "2. Document Format": document-format.md
-    - "3. Manifest":
-      - Overview: manifest/index.md
-      - "3.1 Page Identity": manifest/page-identity.md
-      - "3.2 Permissions": manifest/permissions.md
-      - "3.3 Content": manifest/content.md
-      - "3.4–3.6 Optional Blocks": manifest/optional-blocks.md
-    - "4. Zoned Markdown Body": zoned-body.md
-    - "5. Site-Level Declaration": site-declaration.md
-    - "6. Discovery": discovery.md
-    - "7. Reserved Extensions": extensions.md
-    - "8. Worked Example": example.md
-
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/openames/ames
+  - AMES Specification: index.md

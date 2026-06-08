@@ -1,0 +1,1225 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Technical specification for permission-aware AI agent exchange documents">
+      
+      
+      
+        <link rel="canonical" href="https://openames.org/spec/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>AMES Technical Specification — Version 0.9 (RFC) - AMES — Agent and Machine Exchange Standard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ames-technical-specification-version-09-rfc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AMES — Agent and Machine Exchange Standard" class="md-header__button md-logo" aria-label="AMES — Agent and Machine Exchange Standard" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AMES — Agent and Machine Exchange Standard
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AMES Technical Specification — Version 0.9 (RFC)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../document-format/" class="md-tabs__link">
+          
+  
+  
+  Specification
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AMES — Agent and Machine Exchange Standard" class="md-nav__button md-logo" aria-label="AMES — Agent and Machine Exchange Standard" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AMES — Agent and Machine Exchange Standard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specification
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Specification
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../document-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Document Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Manifest
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Manifest
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/page-identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Page Identity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Content
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manifest/optional-blocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4–3.6 Optional Blocks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zoned-body/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Zoned Markdown Body
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../site-declaration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Site-Level Declaration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Reserved Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Worked Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ames-technical-specification-version-09-rfc">AMES Technical Specification — Version 0.9 (RFC)<a class="headerlink" href="#ames-technical-specification-version-09-rfc" title="Permanent link">&para;</a></h1>
+<p><strong>06/05/2026</strong></p>
+<blockquote>
+<p><strong>Status:</strong> v0.9 RFC. Stable enough for implementation and feedback. Breaking changes before 1.0 will be clearly marked.</p>
+</blockquote>
+<hr />
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<p>The Agent and Machine Exchange Standard (AMES) defines a format for agentic exchange documents: permission-aware companion representations of canonical web content, expressed as Agent Exchange (<code>.ax</code>) files. This version defines the Markdown serialization, <code>.ax.md</code>. Other serializations are reserved for future specification.</p>
+<p>AMES is intended to make web content more legible to automated systems without reducing that content to undifferentiated extracted text. Conventional extraction methods often flatten structural hierarchy, omit visual and contextual relationships, separate content from attribution, and discard rights or usage signals that are necessary for faithful interpretation. AMES provides a standardized translation format that preserves content structure, publisher intent, attribution context, and machine-readable permissions for automated use.</p>
+<p>AMES is a translation and signaling format. It expresses content structure, semantic context, attribution information, and publisher-defined usage permissions. It does not prescribe crawler architecture, require any specific retrieval system, dictate agent behavior, arbitrate content quality, or determine the legal effect that any permission statement may have under applicable law.</p>
+<p>AMES does not replace or override <code>robots.txt</code>. <code>robots.txt</code> governs crawl access. AMES permissions address what an automated system is permitted to do with content once it has access to that content. The two mechanisms operate at different layers and are designed to coexist.</p>
+<p>This specification defines the AMES document model, the <code>.ax.md</code> Markdown serialization, required and optional metadata fields, structural conventions, permission vocabulary, and reserved extension points.</p>
+<hr />
+<h2 id="2-the-ax-document-format">2. The <code>.ax</code> Document Format<a class="headerlink" href="#2-the-ax-document-format" title="Permanent link">&para;</a></h2>
+<p>The <code>.ax</code> document has two primary components: an AMES manifest and a translated body. The manifest declares the document's identity, permissions, and content signals; the body is a structure-preserving translation of the canonical source content.</p>
+<p>In the <code>.ax.md</code> serialization defined by this version, the manifest is a YAML block at the beginning of the file, using conventional YAML frontmatter delimiters, and the body is rendered as zoned Markdown. The manifest contains six defined blocks: Page Identity, Permissions, and Content, which are required, and Topic Signals, Visual Register, and Key Media, which are optional. Each block is defined in Section 3.</p>
+<p>A publisher may also use the AMES permissions infrastructure for pages that do not provide a translated Markdown body. This is a valid AMES use case when the publisher wishes to express machine usage permissions or discovery signals without publishing a full translation of the page.</p>
+<h2 id="3-manifest">3. Manifest<a class="headerlink" href="#3-manifest" title="Permanent link">&para;</a></h2>
+<p>The AMES manifest is organized into six defined blocks. Blocks 1 through 3 are required. Blocks 4 through 6 are optional. The ordering of blocks and any character limits are normative. The blocks and fields defined in this section are the complete set of valid AMES manifest fields for the <code>.ax.md</code> document. Implementations must not introduce additional fields.</p>
+<h3 id="31-block-1-page-identity-required">3.1 Block 1 — Page Identity (Required)<a class="headerlink" href="#31-block-1-page-identity-required" title="Permanent link">&para;</a></h3>
+<p><code>ames_version</code> (String): Always <code>"0.9"</code> for this version.</p>
+<p><code>canonical_url</code> (String): Absolute URL of the human-facing source page.</p>
+<p><code>publisher</code> (String): The organization or publication responsible for this page.</p>
+<p><code>title</code> (String): The page's title; must match the source page's HTML <code>&lt;title&gt;</code>.</p>
+<p><code>locale</code> (String, Optional): IETF BCP 47 language tag, such as <code>"en-US"</code>. Maps from the source page's HTML <code>&lt;html lang=""&gt;</code>.</p>
+<p><code>date_published</code> (String, Optional): ISO 8601 publication date.</p>
+<p><code>date_modified</code> (String, Optional): ISO 8601 last-modified date.</p>
+<h3 id="32-block-2-permissions-required">3.2 Block 2 — Permissions (Required)<a class="headerlink" href="#32-block-2-permissions-required" title="Permanent link">&para;</a></h3>
+<p>A permissions declaration is the publisher's machine-readable statement of which uses of its content by automated systems are permitted or reserved. Publishers must state the permissions under which the page may be used by a consuming system. This may be done by using the AMES native permissions fields described below, or by using the designation <code>custom</code> and pointing to the governing permissions regime.</p>
+<p>A page participating in AMES carries a permissions block with exactly one of two valid states:</p>
+<ol>
+<li>
+<p>AMES native permissions, consisting of four required fields: <code>index</code>, <code>ephemeral</code>, <code>store</code>, and <code>train</code>. AMES permissions govern, as defined in Section 3.2.1. All four positions must be declared; partial declarations are invalid.</p>
+</li>
+<li>
+<p><code>custom</code>. The publisher's own terms govern, and AMES makes no native permission grant. See Section 3.2.2.</p>
+</li>
+</ol>
+<h4 id="321-ames-permissions">3.2.1 AMES Permissions<a class="headerlink" href="#321-ames-permissions" title="Permanent link">&para;</a></h4>
+<p>AMES expresses permissions natively through four independent positions: <code>index</code>, <code>ephemeral</code>, <code>store</code>, and <code>train</code>. These positions cover search indexing, ephemeral retrieval, persistent storage and synthesis, and model development.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">permissions</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">index</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">ephemeral</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">store</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">train</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
+<p>A value of <code>1</code> permits the specified use; a value of <code>0</code> reserves the corresponding right. Each position is independent: an allowed position does not imply permission for any reserved or omitted position, and a reserved or omitted position reserves its right regardless of what any other position allows, subject to applicable law.</p>
+<p>These permissions do not transfer ownership, waive copyright, waive moral rights where applicable, or authorize any use beyond the specific conduct described in the granted position.</p>
+<p>AMES granularizes permissions by observable use and persistence rather than by the class of automated system or company performing the act. Systems that primarily serve to route a user to the source rather than retaining or synthesizing content fall under the index position regardless of the underlying mechanism used.</p>
+<p>A permission state is part of a minimum valid deployment. A participating page declares either AMES native permissions or the <code>custom</code> declaration. A permissions block that is present but blank is invalid. Content for which no AMES declaration exists is governed by applicable law and the publisher's other mechanisms, including <code>robots.txt</code>, terms of service, copyright notices, licenses, and other applicable rights statements.</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Field</th>
+<th>Allow</th>
+<th>Deny</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><code>index</code></td>
+<td>Search indexing permitted. Permits transient reproduction of content, including the extraction or generation of snippets or equivalent navigational preview text or images, for the sole purpose of routing users to the source page, including temporary caching integral to that process.</td>
+<td>Search indexing rights reserved. Transient reproduction and temporary caching of this content for search indexing purposes is not permitted.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><code>ephemeral</code></td>
+<td>Ephemeral retrieval permitted. Permits automated systems to retrieve and use content solely to fulfill an immediate, specific user request, provided the content is not retained beyond the lifecycle of that request. Within that single request, content may be synthesized or excerpted to serve as context for the user's immediate response, with meaningful citation of the source. Content may not be stored, indexed, reused, or retained beyond that request; this permission does not authorize the generation of reusable derived records or persistent substitute displays. This permission does not extend to systematic, scheduled, speculative, or preemptive retrieval; corpus-building; or text and data mining for model-development purposes.</td>
+<td>Ephemeral retrieval rights reserved. Automated retrieval of this content to fulfill user requests, including agentic browsing, tool-mediated retrieval, or similar automated retrieval processes, is not permitted.</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><code>store</code></td>
+<td>Persistent storage and synthesis permitted. Permits automated systems to ingest, persistently retain, and process content in persistent databases or stores across multiple, separate user requests, to produce summaries, synthesized outputs, or excerpts, with meaningful citation of the source. This permission governs retention and reuse of content beyond any single request; it is the persistence that distinguishes it from ephemeral retrieval.</td>
+<td>Persistent storage and synthesis rights reserved. The ingestion, retention, or automated processing of this content to produce persistent summaries, synthesized outputs, or excerpts across multiple requests, beyond the sole purpose of routing users to the source page, is not permitted.</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><code>train</code></td>
+<td>Model development permitted. Permits extraction and use of content for text and data mining for model-development purposes, including as training, fine-tuning, validation, benchmark, or evaluation data for model or system development, for machine-based systems that infer from input to generate outputs. This permission is not to be construed as a waiver of copyright and does not authorize reproduction, distribution, or publication of content beyond what the model-development process itself requires.</td>
+<td>Model development rights reserved. Extraction or use of this content for text and data mining for model-development purposes, including as training, fine-tuning, validation, benchmark, or evaluation data for model or system development, for machine-based systems that infer from input to generate outputs, is not permitted.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: Positions 2 and 3 both permit synthesis with meaningful citation; they are distinguished by retention across requests. <code>ephemeral</code> is synthesize-and-discard: content is used within a single request and not retained beyond its lifecycle. <code>store</code> is synthesize-and-retain: content is ingested and held in persistent stores for reuse across multiple, separate requests. The line is stated in both definitions so neither position absorbs the other, and it is drawn by persistence, not by a system's internal model or the format of its output.</p>
+<p>AMES does not constitute legal advice, confer legal rights, or provide enforcement. Publishers remain responsible for understanding applicable law and enforcing their rights. Nothing in this specification waives or affects any copyright or other right held by a publisher; the permissions expressed through AMES declare which automated uses a publisher permits or reserves, and do not transfer ownership, modify underlying rights, or substitute for any remedy under applicable law.</p>
+<p>AMES permissions apply to the content of the source page, whether declared in the HTML head alone or also represented in an <code>.ax.md</code> translation file. They do not grant usage permissions for separately embodied media assets, source code, executable code, scripts, stylesheets, embedded components, third-party services, stock media, embedded media, third-party media, or other separately licensed materials, unless those rights and permissions are independently held and granted outside AMES.</p>
+<h4 id="322-custom-permissions">3.2.2 Custom Permissions<a class="headerlink" href="#322-custom-permissions" title="Permanent link">&para;</a></h4>
+<p>Although all conforming AMES implementations must carry a <code>permissions</code> declaration, a publisher is not required to use the AMES-defined permissions fields. A publisher may instead point to its preferred permissions language or framework using the <code>custom</code> designation. A <code>custom</code> value carries its pointer inline, after the keyword:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">permissions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">permissions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom https://example.com/terms</span>
+</code></pre></div>
+<p>The value is read as a single string split on the first whitespace: the first token is the keyword <code>custom</code>, and any remainder is an optional pointer to the governing terms, which must be an absolute URL. The pointer is the only permitted supplement; free text is not valid. AMES does not retrieve, interpret, validate, or standardize the resource the pointer identifies.</p>
+<h3 id="33-block-3-content-required">3.3 Block 3 — Content (Required)<a class="headerlink" href="#33-block-3-content-required" title="Permanent link">&para;</a></h3>
+<p>The Content block identifies the zone or zones that constitute the substantive content of the source page. This block distinguishes the primary body of the work from navigation, chrome, advertising, comments, recommendation modules, related-content regions, and other non-substantive page elements.</p>
+<p>The Content block contains one required field, <code>content.zone</code>, and one optional field, <code>content.dynamic_dom</code>.</p>
+<p><code>content.zone</code> (String or Array of Strings): Declares the zone or zones that constitute the substantive content of the page.</p>
+<p>String, such as <code>"article"</code>: All elements matching this zone name are selected from the source page and treated as the substantive content zone.</p>
+<p>Array, such as <code>["hero", "practice-areas"]</code>: All elements matching each declared zone name are selected and treated as the substantive content zones. The order of zone names in the array does not control content order; selected elements are interpreted in source order.</p>
+<p>The declared content zone or zones must correspond to the substantive content translated in the zoned Markdown body. The Content block identifies the source content region; it must not introduce, summarize, replace, expand, or editorially alter the source content.</p>
+<p><code>content.dynamic_dom</code> (Boolean, Optional): Defaults to <code>false</code>. Set to <code>true</code> when client-side scripts alter the structural container sequence of the declared content zone after the initial server response, so that the translated body is a representative capture of the zone rather than a frame-exact match.</p>
+<h4 id="34-block-4-topic-signals-optional">3.4 Block 4 — Topic Signals (Optional)<a class="headerlink" href="#34-block-4-topic-signals-optional" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>topic_signals.intended_audience</code> (String, max 160 chars): The intended reader or use case.</li>
+<li><code>topic_signals.core_topics</code> (Array of Strings, max 8 items, max 40 chars each): Primary subject areas.</li>
+</ul>
+<h4 id="35-block-5-visual-register-optional">3.5 Block 5 — Visual Register (Optional)<a class="headerlink" href="#35-block-5-visual-register-optional" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>visual_register.logo_url</code> (String): Absolute URL to primary logo.</li>
+<li><code>visual_register.colors</code> (Array, max 3 hex values): Primary, secondary, and accent colors in order of prominence.</li>
+<li><code>visual_register.typography</code> (String, max 150 chars): Type choices, weight, and typographic character.</li>
+<li><code>visual_register.visual_direction</code> (String, max 300 chars): Imagery style and overall visual character.</li>
+</ul>
+<h4 id="36-block-6-key-media-optional">3.6 Block 6 — Key Media (Optional)<a class="headerlink" href="#36-block-6-key-media-optional" title="Permanent link">&para;</a></h4>
+<p>Identifies media essential to a machine reader's understanding of the page, declared under the top-level <code>media</code> key as a list of items. Decorative imagery is omitted.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Yes</td>
+<td>Unique identifier within this file. Referenced in the body via <code>ames-media:id</code>.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>Yes</td>
+<td>Absolute, publicly resolvable URL.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Yes</td>
+<td>One of: <code>diagram</code>, <code>photo</code>, <code>chart</code>, <code>illustration</code>, <code>screenshot</code>, <code>video</code>, <code>audio</code>, <code>embed</code>.</td>
+</tr>
+<tr>
+<td><code>alt_text</code></td>
+<td>Yes</td>
+<td>Human-facing accessibility description.</td>
+</tr>
+<tr>
+<td><code>transcript_url</code></td>
+<td>No</td>
+<td>Absolute URL to an existing transcript (for <code>video</code>/<code>audio</code>).</td>
+</tr>
+<tr>
+<td><code>ocr_text</code></td>
+<td>No</td>
+<td>Extractable text visible within the image (image types only).</td>
+</tr>
+</tbody>
+</table>
+<p>Declared media is referenced in the body using <code>ames-media:id</code> syntax. A declared media item must not also be embedded or referenced by its ordinary source URL as standard Markdown image syntax or as a raw URL.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>![Descriptive alt text](ames-media:exposure-diagram)
+</code></pre></div>
+<h2 id="4-the-zoned-markdown-body">4. The Zoned Markdown Body<a class="headerlink" href="#4-the-zoned-markdown-body" title="Permanent link">&para;</a></h2>
+<p>After the manifest, the body is rendered in Markdown with zone markers preserving the structural sequence and container boundaries of the source HTML. Translation is a structural DOM traversal, not a generic HTML-to-Markdown conversion. Implementations walk the source DOM and emit a zone marker at each structural container boundary. Content elements are rendered as Markdown within the surrounding zone.</p>
+<p><strong>Zone markers</strong> use CommonMark link-label syntax and are invisible when rendered:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[//]: # (ames:zone zone-name)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>[//]: # (ames:zone zone-name | permission-tuple)
+</code></pre></div>
+<p>Zoned Markdown is flat. Zone markers identify structural boundaries in traversal order; they do not open nested scopes. A new marker terminates the preceding zone. Named zones do not nest. Nested semantic elements each generate their own marker in flat sequence: a <code>&lt;main&gt;</code> containing an <code>&lt;article&gt;</code> produces two sequential markers.</p>
+<p><strong>Structural parity.</strong> Every structural container element encountered during traversal produces a zone marker. The zone name is the <code>data-ames</code> attribute value if present; otherwise, it is the element tag name. Empty zones are valid. A structural container that contains no renderable Markdown content still emits a marker. Structural parity is evaluated against the static, server-delivered HTML source, prior to the execution of any client-side scripts; the translated body represents that source.</p>
+<p>A zone name must consist only of lowercase letters, digits, and hyphens, matching <code>[a-z0-9-]+</code>. The <code>data-ames</code> attribute value must already conform. A derived tag name conforms by construction. Where a <code>data-ames</code> value does not conform, the consuming system normalizes it by lowercasing and replacing each run of disallowed characters with a single hyphen; this preserves the structural marker but does not guarantee the original label. Publishers carry the burden of supplying conformant <code>data-ames</code> values.</p>
+<p>A page whose content is unbounded or non-deterministic, such as an infinite-scroll feed, falls outside the structural parity model and is not a suitable candidate for AMES translation. A page that relies on client-side scripting to manifest its content remains eligible; the publisher declares this with <code>content.dynamic_dom</code>.</p>
+<p>Structural container elements: <code>&lt;div&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;form&gt;</code>, <code>&lt;search&gt;</code>, <code>&lt;figure&gt;</code>, <code>&lt;details&gt;</code>, <code>&lt;summary&gt;</code>, <code>&lt;dialog&gt;</code>.</p>
+<p>Content elements render as Markdown within the surrounding zone and do not produce markers: <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>&lt;pre&gt;</code>, <code>&lt;table&gt;</code>.</p>
+<p>The following excluded elements do not produce zone markers and do not render as Markdown: <code>&lt;script&gt;</code>, <code>&lt;style&gt;</code>, <code>&lt;noscript&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;canvas&gt;</code>, <code>&lt;svg&gt;</code>. An SVG that carries substantive informational content may be declared in Block 6 as Key Media.</p>
+<p><strong>Zone-level overrides.</strong> A zone whose permissions differ from the page default carries its tuple in two places: the zone marker in the <code>.ax.md</code> file, and a <code>data-ames-policy</code> attribute on the corresponding source element.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">article</span> <span class="na">data-ames</span><span class="o">=</span><span class="s">&quot;article&quot;</span> <span class="na">data-ames-policy</span><span class="o">=</span><span class="s">&quot;1/1/0/0&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Zone permissions do not inherit from ancestor containers in the source DOM; each marker carries its own tuple if it differs from the page default.</p>
+<p><strong>Translation conventions.</strong></p>
+<ul>
+<li><strong>Absolute URLs.</strong> All hyperlinks and image URLs are resolved to absolute form. Declared media uses <code>ames-media:id</code>; undeclared images render as standard Markdown image syntax.</li>
+<li><strong>Tables.</strong> Tables are rendered as pipe-delimited Markdown when the source table contains a discernible header row. Implementations must not manufacture header labels that are not present in the source. A table without a discernible source header row may be rendered using the closest faithful Markdown representation available, but any generated structure must not introduce labels, relationships, or meanings absent from the source.</li>
+</ul>
+<p><strong>Zone sequence examples.</strong></p>
+<p>Semantic HTML5: <code>&lt;nav&gt;&lt;main&gt;&lt;article&gt;&lt;/article&gt;&lt;/main&gt;&lt;footer&gt;</code> →</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[//]: # (ames:zone nav)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>[//]: # (ames:zone main)
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>[//]: # (ames:zone article)
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>[//]: # (ames:zone footer)
+</code></pre></div>
+<p>Non-semantic markup with <code>data-ames</code> attributes produces the same sequence by attribute value; enhanced markup (<code>data-ames="primary-nav"</code>, <code>data-ames="footer-nav"</code>) produces zone names reflecting functional role.</p>
+<h2 id="5-the-site-level-declaration-file-and-cascade">5. The Site-Level Declaration File and Cascade<a class="headerlink" href="#5-the-site-level-declaration-file-and-cascade" title="Permanent link">&para;</a></h2>
+<h3 id="51-site-level-declaration">5.1 Site-Level Declaration<a class="headerlink" href="#51-site-level-declaration" title="Permanent link">&para;</a></h3>
+<p>An AMES deployment should include an <code>ames-ai.txt</code> file at <code>/.well-known/ames-ai.txt</code>. The file is recommended, not required. It is not required to be linked from an individual page; consuming systems discover it by convention at that fixed path.</p>
+<p>Because the site-level declaration is discovered independently of any page-level context, it is self-identifying.</p>
+<p><strong>Format.</strong> The file uses flat <code>Key: Value</code> lines. This format avoids MIME-type and server-configuration friction on shared hosting and requires no YAML or Markdown parser. Lines beginning with <code>#</code> are comments. Comments carry human-readable notice and do not modify the keyed fields. The keyed fields are the machine-readable declaration. <code>AMES-Policy</code> is the operative site-level permission state, and its meaning is defined by the specification identified by <code>AMES-Spec</code>. Field keys use the <code>AMES-</code> prefix.</p>
+<p><strong>Fields:</strong></p>
+<ul>
+<li><code>AMES-Version</code> (Required): Always <code>0.9</code> for this version.</li>
+<li><code>AMES-Publisher</code> (Required): The organization responsible for the domain.</li>
+<li><code>AMES-Domain</code> (Required): The domain governed by the declaration. This field self-identifies the declaration when the file travels apart from its location.</li>
+<li><code>AMES-Policy</code> (Required): Site-wide permission state, expressed as a four-position tuple or <code>custom</code>, per Section 3.</li>
+<li><code>AMES-Positions</code> (Required in tuple state): The tuple legend; in this version, exactly <code>index/ephemeral/store/train</code>.</li>
+<li><code>AMES-Values</code> (Required in tuple state): The value legend; <code>1=allow, 0=deny</code>.</li>
+<li><code>AMES-Locale</code> (Optional): IETF BCP 47 primary language tag for the domain.</li>
+<li><code>AMES-Spec</code> (Required): Absolute URL identifying the AMES specification version that defines the meaning of the declaration.</li>
+</ul>
+<p>The fields defined in this section are the complete set of valid fields for the site-level declaration file. Implementations must not introduce additional site-level fields.</p>
+<p><strong>Example — <code>/.well-known/ames-ai.txt</code>:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a># Notice
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a># This file provides a site-level AMES declaration for automated systems. Page-level AMES declarations control where present. Where no valid page-level AMES declaration is present, the AMES-Policy in this file states the publisher&#39;s site-level default.
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>#
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a># The meaning of the AMES-Policy is defined by the AMES specification identified by AMES-Spec. Except as expressly permitted by a valid AMES declaration, all copyright, related rights, neighboring rights, database rights, text-and-data-mining rights, and other applicable rights are reserved, including for purposes of Article 4 of Directive (EU) 2019/790 where applicable.
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>#
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a># This declaration applies only to content for which the publisher holds the relevant rights and does not grant rights in third-party or separately licensed material.
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>AMES-Version: 0.9
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>AMES-Policy: 1/1/0/0
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>AMES-Positions: index/ephemeral/store/train
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>AMES-Values: 1=allow, 0=deny
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>AMES-Publisher: Catchlight
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>AMES-Domain: catchlightmag.com
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>AMES-Spec: https://openames.org/v0.9
+</code></pre></div>
+<p>In the <code>custom</code> state, <code>AMES-Policy</code> carries the keyword alone, optionally followed by an absolute URL to the governing terms; <code>AMES-Positions</code> and <code>AMES-Values</code> are omitted, as there is no tuple to legend.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>AMES-Version: 0.9
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>AMES-Policy: custom
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>AMES-Publisher: Catchlight
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>AMES-Domain: catchlightmag.com
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>AMES-Spec: https://openames.org/v0.9
+</code></pre></div>
+<p>A publisher governing its domain entirely through a custom permissions regime does not need this file. Where a custom regime already carries the publisher's terms, the <code>ames-ai.txt</code> declaration may be omitted in favor of that regime.</p>
+<h3 id="52-permissions-cascade">5.2 Permissions Cascade<a class="headerlink" href="#52-permissions-cascade" title="Permanent link">&para;</a></h3>
+<p><strong>Cascade.</strong> AMES permissions resolve from the most specific valid declaration to the broadest applicable valid declaration: zone overrides page, and page overrides site. Each broader layer applies only where a more-specific valid declaration is absent.</p>
+<p>A malformed page-level permission declaration falls back to the site-level declaration where one exists, rather than directly to the absence of AMES permissions. Where all layers are absent or invalid, no AMES declaration exists for the content.</p>
+<p>Zone-level tuples require a page-level AMES native permission declaration to exist. A zone-level override, whether expressed in an <code>.ax.md</code> zone marker or in a <code>data-ames-policy</code> attribute, is invalid when no page-level <code>ames-policy</code> declaration is present. A zone-level override is defined relative to a declared page-level baseline. A malformed zone-level tuple is disregarded, and the zone is governed by the page-level declaration.</p>
+<h2 id="6-source-header-and-discovery">6. Source Header and Discovery<a class="headerlink" href="#6-source-header-and-discovery" title="Permanent link">&para;</a></h2>
+<h3 id="61-the-html-source-header">6.1 The HTML Source Header<a class="headerlink" href="#61-the-html-source-header" title="Permanent link">&para;</a></h3>
+<p>A source page carries its page-level AMES declaration in the HTML <code>&lt;head&gt;</code>.</p>
+<ul>
+<li><strong>Usage reference (required).</strong> <code>rel="automated-usage"</code> links to the resource that governs automated use of the page and carries the AMES version in its <code>href</code>. The relation is generic and not AMES-specific; the <code>href</code> value ties the page to AMES. There is no separate version meta tag.</li>
+<li><strong>Permissions (required).</strong> <code>name="ames-policy"</code> declares the page-level permission state. The <code>content</code> attribute carries either a permission tuple or <code>custom</code>; <code>data-positions</code> carries the tuple legend when a tuple is used.</li>
+<li><strong>Exchange Document Link (required when a translation exists).</strong> <code>rel="alternate" type="text/markdown"</code> links the source page to its <code>.ax.md</code> translation file.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;automated-usage&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://openames.org/v0.9&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;ames-policy&quot;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>      <span class="na">content</span><span class="o">=</span><span class="s">&quot;1/1/0/0&quot;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>      <span class="na">data-positions</span><span class="o">=</span><span class="s">&quot;index/ephemeral/store/train&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;alternate&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/markdown&quot;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>      <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://example.com/page.ax.md&quot;</span> <span class="p">/&gt;</span>
+</code></pre></div>
+<p>The <code>ames-policy</code> tag has two valid states. In the <strong>tuple state</strong>, <code>content</code> is the four-position permission tuple, and <code>data-positions</code> is present and, in this version, exactly <code>index/ephemeral/store/train</code>.</p>
+<p>In the <strong><code>custom</code> state</strong>, <code>content</code> is <code>custom</code>, <code>data-positions</code> is omitted because there is no tuple to legend, and <code>data-notice</code> is optional. When present, <code>data-notice</code> carries an absolute URL pointing to the publisher's governing terms.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;ames-policy&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;custom&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;ames-policy&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;custom&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>      <span class="na">data-notice</span><span class="o">=</span><span class="s">&quot;https://example.com/terms&quot;</span> <span class="p">/&gt;</span>
+</code></pre></div>
+<p><code>data-notice</code> is used only in the <code>custom</code> state, where it may carry an optional absolute URL pointing to the publisher's terms. It is not used in tuple state.</p>
+<p>The site-level declaration is not linked from the page. It is found by convention at the fixed <code>/.well-known/ames-ai.txt</code> path. See Section 5.1.</p>
+<p>Zone-level overrides travel on the source element as <code>data-ames-policy</code>, for example <code>data-ames-policy="1/0/0/0"</code>.</p>
+<p>A <code>permissions</code> block in an <code>.ax.md</code> file and the <code>ames-policy</code> declaration in the source <code>&lt;head&gt;</code> express the same page-level permission state and must agree.</p>
+<h3 id="62-other-discovery-mechanisms">6.2 Other Discovery Mechanisms<a class="headerlink" href="#62-other-discovery-mechanisms" title="Permanent link">&para;</a></h3>
+<p><strong>Sitemap injection (recommended).</strong> <code>.ax.md</code> URLs are listed alongside their HTML counterparts in <code>sitemap.xml</code>, each with its own <code>&lt;lastmod&gt;</code>.</p>
+<p><strong>LLM hinting (informational).</strong> Publishers may list AMES URLs in <code>llms.txt</code> with explicit Markdown links.</p>
+<h2 id="7-reserved-extensions">7. Reserved Extensions<a class="headerlink" href="#7-reserved-extensions" title="Permanent link">&para;</a></h2>
+<p>The following extensions are reserved in AMES 0.9. They are named but not specified, and are dormant in this version.</p>
+<ul>
+<li><strong><code>.ax.json</code></strong> — JSON serialization of the agentic exchange document. AMES 0.9 specifies the Markdown serialization only. The <code>.ax.json</code> suffix and <code>application/ames+json</code> MIME type are reserved.</li>
+<li><strong><code>content_integrity</code></strong> (manifest block) — Reserved for cryptographic content verification, including fingerprinting, normalization, and verification status.</li>
+</ul>
+<h2 id="8-worked-example">8. Worked Example<a class="headerlink" href="#8-worked-example" title="Permanent link">&para;</a></h2>
+<p>A complete HTML page and its <code>.ax.md</code> translation. Catchlight is fictional. The page permits indexing and ephemeral retrieval and reserves store and train (<code>1/1/0/0</code>); the comments zone, carrying content the publisher does not own, reserves ephemeral as well (<code>1/0/0/0</code>).</p>
+<p><strong>Source HTML page:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en-US&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>The Golden Hour Myth: Why the Best Light Is the Light You Understand<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;automated-usage&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://openames.org/v0.9&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;ames-policy&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;1/1/0/0&quot;</span> <span class="na">data-positions</span><span class="o">=</span><span class="s">&quot;index/ephemeral/store/train&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;alternate&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/markdown&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://catchlightmag.com/articles/golden-hour-myth.ax.md&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;canonical&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://catchlightmag.com/articles/golden-hour-myth/&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&quot;og:title&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;The Golden Hour Myth&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/assets/css/typography.css&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/assets/css/article.css&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>  <span class="p">&lt;</span><span class="nt">header</span> <span class="na">data-ames</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Catchlight | For photographers who think<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>  <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>  <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">data-ames</span><span class="o">=</span><span class="s">&quot;primary-nav&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/features&quot;</span><span class="p">&gt;</span>Features<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/technique&quot;</span><span class="p">&gt;</span>Technique<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>  <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>  <span class="p">&lt;</span><span class="nt">article</span> <span class="na">data-ames</span><span class="o">=</span><span class="s">&quot;article&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>The Golden Hour Myth: Why the Best Light Is the Light You Understand<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>By Maya Osei<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> | Published March 18, 2026 | Technique<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Every photography tutorial says the same thing: shoot at golden hour. But chasing golden hour is a crutch <span class="ni">&amp;mdash;</span> the photographers who transcend it are the ones who learn to see in any light.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/assets/articles/golden-hour-myth/midday-comparison.jpg&quot;</span>
+<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>         <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Side-by-side portraits: golden hour at left, managed midday shade at right, producing equally compelling contrast.&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>  <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>
+<a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a>  <span class="p">&lt;</span><span class="nt">aside</span> <span class="na">data-ames</span><span class="o">=</span><span class="s">&quot;related&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a>    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Related Articles<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/technique/reading-shadows&quot;</span><span class="p">&gt;</span>Reading Shadows: A Field Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a>  <span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a>
+<a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a>  <span class="p">&lt;</span><span class="nt">section</span> <span class="na">data-ames</span><span class="o">=</span><span class="s">&quot;comments&quot;</span> <span class="na">data-ames-policy</span><span class="o">=</span><span class="s">&quot;1/0/0/0&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a>    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Comments<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a>  <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a>
+<a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a>  <span class="p">&lt;</span><span class="nt">footer</span> <span class="na">data-ames</span><span class="o">=</span><span class="s">&quot;footer&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-11-51" name="__codelineno-11-51" href="#__codelineno-11-51"></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="ni">&amp;copy;</span> 2026 Catchlight Magazine<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-11-52" name="__codelineno-11-52" href="#__codelineno-11-52"></a>  <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<a id="__codelineno-11-53" name="__codelineno-11-53" href="#__codelineno-11-53"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-11-54" name="__codelineno-11-54" href="#__codelineno-11-54"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><strong>Translation file <code>golden-hour-myth.ax.md</code>:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>---
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ames_version: &quot;0.9&quot;
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>canonical_url: &quot;https://catchlightmag.com/articles/golden-hour-myth/&quot;
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>publisher: &quot;Catchlight&quot;
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>title: &quot;The Golden Hour Myth: Why the Best Light Is the Light You Understand&quot;
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>locale: &quot;en-US&quot;
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>date_published: &quot;2026-03-18T09:00:00Z&quot;
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>permissions:
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>  index: 1
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>  ephemeral: 1
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>  store: 0
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>  train: 0
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>content:
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>  zone: &quot;article&quot;
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>topic_signals:
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>  intended_audience: &quot;Intermediate to advanced photographers seeking to deepen craft rather than acquire gear.&quot;
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>  core_topics: [&quot;photography&quot;, &quot;natural light&quot;, &quot;composition&quot;, &quot;photographic technique&quot;, &quot;visual literacy&quot;]
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>visual_register:
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>  logo_url: &quot;https://catchlightmag.com/assets/logo.svg&quot;
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>  colors: [&quot;#1a1a1a&quot;, &quot;#f5f2ee&quot;, &quot;#c8773a&quot;]
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>  typography: &quot;Clean serif headlines with generous leading; neutral sans-serif body.&quot;
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>  visual_direction: &quot;Documentary and fine art photography. High contrast, minimal post-processing.&quot;
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>media:
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>id: &quot;midday-portrait-comparison&quot;
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>    url: &quot;https://catchlightmag.com/assets/articles/golden-hour-myth/midday-comparison.jpg&quot;
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>    type: &quot;photo&quot;
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="gu">    alt_text: &quot;Side-by-side portraits: golden hour at left, managed midday shade at right, producing equally compelling contrast.&quot;</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="gu">---</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>
+<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>[<span class="nl">//</span>]: <span class="na"># (ames:zone header)</span>
+<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>Catchlight | For photographers who think
+<a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a>
+<a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>[<span class="nl">//</span>]: <span class="na"># (ames:zone primary-nav)</span>
+<a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="k">-</span><span class="w"> </span>[<span class="nt">Features</span>](<span class="na">https://catchlightmag.com/features</span>)
+<a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="k">-</span><span class="w"> </span>[<span class="nt">Technique</span>](<span class="na">https://catchlightmag.com/technique</span>)
+<a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>
+<a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>[<span class="nl">//</span>]: <span class="na"># (ames:zone article)</span>
+<a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="gh"># The Golden Hour Myth: Why the Best Light Is the Light You Understand</span>
+<a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>
+<a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="gs">**By Maya Osei**</span> | Published March 18, 2026 | Technique
+<a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a>
+<a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a>Every photography tutorial says the same thing: shoot at golden hour. But chasing golden hour is a crutch — the photographers who transcend it are the ones who learn to see in any light.
+<a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a>
+<a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a>![<span class="nt">Side-by-side portraits: golden hour vs. managed midday</span>](<span class="na">ames-media:midday-portrait-comparison</span>)
+<a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a>
+<a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a>[<span class="nl">//</span>]: <span class="na"># (ames:zone related)</span>
+<a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="gu">## Related Articles</span>
+<a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="k">-</span><span class="w"> </span>[<span class="nt">Reading Shadows: A Field Guide</span>](<span class="na">https://catchlightmag.com/technique/reading-shadows</span>)
+<a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a>
+<a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a>[<span class="nl">//</span>]: <span class="na"># (ames:zone comments | 1/0/0/0)</span>
+<a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="gu">## Comments</span>
+<a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a>
+<a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a>[<span class="nl">//</span>]: <span class="na"># (ames:zone footer)</span>
+<a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a>© 2026 Catchlight Magazine
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/openames/ames" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
