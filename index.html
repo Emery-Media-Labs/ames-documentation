@@ -333,7 +333,7 @@
   <a href="#31-block-1-page-identity-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 Block 1 — Page Identity (Required)
+        3.1 Block 1: Page Identity (Required)
       
     </span>
   </a>
@@ -344,12 +344,12 @@
   <a href="#32-block-2-permissions-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 Block 2 — Permissions (Required)
+        3.2 Block 2: Permissions (Required)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.2 Block 2 — Permissions (Required)">
+    <nav class="md-nav" aria-label="3.2 Block 2: Permissions (Required)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -383,19 +383,18 @@
   <a href="#33-block-3-content-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 Block 3 — Content (Required)
+        3.3 Block 3: Content (Required)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.3 Block 3 — Content (Required)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#34-block-4-topic-signals-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 Block 4 — Topic Signals (Optional)
+        3.4 Block 4 : Topic Signals (Optional)
       
     </span>
   </a>
@@ -406,7 +405,7 @@
   <a href="#35-block-5-visual-register-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5 Block 5 — Visual Register (Optional)
+        3.5 Block 5: Visual Register (Optional)
       
     </span>
   </a>
@@ -417,15 +416,10 @@
   <a href="#36-block-6-key-media-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.6 Block 6 — Key Media (Optional)
+        3.6 Block 6: Key Media (Optional)
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -570,8 +564,8 @@
 
 
 
-<h1 id="ames-technical-specification-version-09-rfc">AMES Technical Specification — Version 0.9 (RFC)<a class="headerlink" href="#ames-technical-specification-version-09-rfc" title="Permanent link">&para;</a></h1>
-<p><strong>06/05/2026</strong></p>
+<h1 id="ames-technical-specification-version-09-rfc">AMES Technical Specification: Version 0.9 (RFC)<a class="headerlink" href="#ames-technical-specification-version-09-rfc" title="Permanent link">&para;</a></h1>
+<p><strong>06/10/2026</strong></p>
 <blockquote>
 <p><strong>Status:</strong> v0.9 RFC. Stable enough for implementation and feedback. Breaking changes before 1.0 will be clearly marked.</p>
 </blockquote>
@@ -588,8 +582,8 @@
 <p>In the <code>.ax.md</code> serialization defined by this version, the manifest is a YAML block at the beginning of the file, using conventional YAML frontmatter delimiters, and the body is rendered as zoned Markdown. The manifest contains six defined blocks: Page Identity, Permissions, and Content, which are required, and Topic Signals, Visual Register, and Key Media, which are optional. Each block is defined in Section 3.</p>
 <p>A publisher may also use the AMES permissions infrastructure for pages that do not provide a translated Markdown body. This is a valid AMES use case when the publisher wishes to express machine usage permissions or discovery signals without publishing a full translation of the page.</p>
 <h2 id="3-manifest">3. Manifest<a class="headerlink" href="#3-manifest" title="Permanent link">&para;</a></h2>
-<p>The AMES manifest is organized into six defined blocks. Blocks 1 through 3 are required. Blocks 4 through 6 are optional. The ordering of blocks and any character limits are normative. The blocks and fields defined in this section are the complete set of valid AMES manifest fields for the <code>.ax.md</code> document. Implementations must not introduce additional fields.</p>
-<h3 id="31-block-1-page-identity-required">3.1 Block 1 — Page Identity (Required)<a class="headerlink" href="#31-block-1-page-identity-required" title="Permanent link">&para;</a></h3>
+<p>The AMES manifest is organized into six defined blocks. Blocks 1 through 3 are required. Blocks 4 through 6 are optional. The ordering of blocks and any character limits are normative. The blocks and fields defined in this section are the complete set of valid AMES manifest fields for the <code>.ax.md</code> document for this version. Implementations must not introduce additional fields.</p>
+<h3 id="31-block-1-page-identity-required">3.1 Block 1: Page Identity (Required)<a class="headerlink" href="#31-block-1-page-identity-required" title="Permanent link">&para;</a></h3>
 <p><code>ames_version</code> (String): Always <code>"0.9"</code> for this version.</p>
 <p><code>canonical_url</code> (String): Absolute URL of the human-facing source page.</p>
 <p><code>publisher</code> (String): The organization or publication responsible for this page.</p>
@@ -597,7 +591,7 @@
 <p><code>locale</code> (String, Optional): IETF BCP 47 language tag, such as <code>"en-US"</code>. Maps from the source page's HTML <code>&lt;html lang=""&gt;</code>.</p>
 <p><code>date_published</code> (String, Optional): ISO 8601 publication date.</p>
 <p><code>date_modified</code> (String, Optional): ISO 8601 last-modified date.</p>
-<h3 id="32-block-2-permissions-required">3.2 Block 2 — Permissions (Required)<a class="headerlink" href="#32-block-2-permissions-required" title="Permanent link">&para;</a></h3>
+<h3 id="32-block-2-permissions-required">3.2 Block 2: Permissions (Required)<a class="headerlink" href="#32-block-2-permissions-required" title="Permanent link">&para;</a></h3>
 <p>A permissions declaration is the publisher's machine-readable statement of which uses of its content by automated systems are permitted or reserved. Publishers must state the permissions under which the page may be used by a consuming system. This may be done by using the AMES native permissions fields described below, or by using the designation <code>custom</code> and pointing to the governing permissions regime.</p>
 <p>A page participating in AMES carries a permissions block with exactly one of two valid states:</p>
 <ol>
@@ -666,27 +660,27 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">permissions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom https://example.com/terms</span>
 </code></pre></div>
 <p>The value is read as a single string split on the first whitespace: the first token is the keyword <code>custom</code>, and any remainder is an optional pointer to the governing terms, which must be an absolute URL. The pointer is the only permitted supplement; free text is not valid. AMES does not retrieve, interpret, validate, or standardize the resource the pointer identifies.</p>
-<h3 id="33-block-3-content-required">3.3 Block 3 — Content (Required)<a class="headerlink" href="#33-block-3-content-required" title="Permanent link">&para;</a></h3>
+<h3 id="33-block-3-content-required">3.3 Block 3: Content (Required)<a class="headerlink" href="#33-block-3-content-required" title="Permanent link">&para;</a></h3>
 <p>The Content block identifies the zone or zones that constitute the substantive content of the source page. This block distinguishes the primary body of the work from navigation, chrome, advertising, comments, recommendation modules, related-content regions, and other non-substantive page elements.</p>
 <p>The Content block contains one required field, <code>content.zone</code>, and one optional field, <code>content.dynamic_dom</code>.</p>
 <p><code>content.zone</code> (String or Array of Strings): Declares the zone or zones that constitute the substantive content of the page.</p>
 <p>String, such as <code>"article"</code>: All elements matching this zone name are selected from the source page and treated as the substantive content zone.</p>
 <p>Array, such as <code>["hero", "practice-areas"]</code>: All elements matching each declared zone name are selected and treated as the substantive content zones. The order of zone names in the array does not control content order; selected elements are interpreted in source order.</p>
 <p>The declared content zone or zones must correspond to the substantive content translated in the zoned Markdown body. The Content block identifies the source content region; it must not introduce, summarize, replace, expand, or editorially alter the source content.</p>
-<p><code>content.dynamic_dom</code> (Boolean, Optional): Defaults to <code>false</code>. Set to <code>true</code> when client-side scripts alter the structural container sequence of the declared content zone after the initial server response, so that the translated body is a representative capture of the zone rather than a frame-exact match.</p>
-<h4 id="34-block-4-topic-signals-optional">3.4 Block 4 — Topic Signals (Optional)<a class="headerlink" href="#34-block-4-topic-signals-optional" title="Permanent link">&para;</a></h4>
+<p><code>content.dynamic_dom</code> (Boolean, Optional): Defaults to <code>false</code>. Set to <code>true</code> when client-side scripts alter the structural container sequence of the declared content zone after the initial server response. This flag does not alter what the translated body represents; structural parity is evaluated per Section 4. The flag is an advisory signal that the manifested page may differ structurally from the static source.</p>
+<h3 id="34-block-4-topic-signals-optional">3.4 Block 4 : Topic Signals (Optional)<a class="headerlink" href="#34-block-4-topic-signals-optional" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>topic_signals.intended_audience</code> (String, max 160 chars): The intended reader or use case.</li>
 <li><code>topic_signals.core_topics</code> (Array of Strings, max 8 items, max 40 chars each): Primary subject areas.</li>
 </ul>
-<h4 id="35-block-5-visual-register-optional">3.5 Block 5 — Visual Register (Optional)<a class="headerlink" href="#35-block-5-visual-register-optional" title="Permanent link">&para;</a></h4>
+<h3 id="35-block-5-visual-register-optional">3.5 Block 5: Visual Register (Optional)<a class="headerlink" href="#35-block-5-visual-register-optional" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>visual_register.logo_url</code> (String): Absolute URL to primary logo.</li>
 <li><code>visual_register.colors</code> (Array, max 3 hex values): Primary, secondary, and accent colors in order of prominence.</li>
 <li><code>visual_register.typography</code> (String, max 150 chars): Type choices, weight, and typographic character.</li>
 <li><code>visual_register.visual_direction</code> (String, max 300 chars): Imagery style and overall visual character.</li>
 </ul>
-<h4 id="36-block-6-key-media-optional">3.6 Block 6 — Key Media (Optional)<a class="headerlink" href="#36-block-6-key-media-optional" title="Permanent link">&para;</a></h4>
+<h3 id="36-block-6-key-media-optional">3.6 Block 6: Key Media (Optional)<a class="headerlink" href="#36-block-6-key-media-optional" title="Permanent link">&para;</a></h3>
 <p>Identifies media essential to a machine reader's understanding of the page, declared under the top-level <code>media</code> key as a list of items. Decorative imagery is omitted.</p>
 <table>
 <thead>
@@ -771,7 +765,7 @@
 <ul>
 <li><code>AMES-Version</code> (Required): Always <code>0.9</code> for this version.</li>
 <li><code>AMES-Publisher</code> (Required): The organization responsible for the domain.</li>
-<li><code>AMES-Domain</code> (Required): The domain governed by the declaration. This field self-identifies the declaration when the file travels apart from its location.</li>
+<li><code>AMES-Domain</code> (Required): The host governed by the declaration, such as <code>catchlightmag.com</code>. This field self-identifies the declaration when the file travels apart from its location.</li>
 <li><code>AMES-Policy</code> (Required): Site-wide permission state, expressed as a four-position tuple or <code>custom</code>, per Section 3.</li>
 <li><code>AMES-Positions</code> (Required in tuple state): The tuple legend; in this version, exactly <code>index/ephemeral/store/train</code>.</li>
 <li><code>AMES-Values</code> (Required in tuple state): The value legend; <code>1=allow, 0=deny</code>.</li>
@@ -779,7 +773,8 @@
 <li><code>AMES-Spec</code> (Required): Absolute URL identifying the AMES specification version that defines the meaning of the declaration.</li>
 </ul>
 <p>The fields defined in this section are the complete set of valid fields for the site-level declaration file. Implementations must not introduce additional site-level fields.</p>
-<p><strong>Example — <code>/.well-known/ames-ai.txt</code>:</strong></p>
+<p><strong>Scope.</strong> A site-level declaration governs only the host from which it is retrieved. A declaration retrieved from <code>https://catchlightmag.com/.well-known/ames-ai.txt</code> does not govern <code>https://blog.catchlightmag.com</code> or any other host, and a declaration on one host does not extend to its subdomains or to its parent registrable domain. A host requiring a site-level declaration serves its own file at its own <code>/.well-known/ames-ai.txt</code> path. A site-level declaration is valid only where its <code>AMES-Domain</code> value matches the host from which it was retrieved; a host matches where it is identical to the <code>AMES-Domain</code> value or differs from it only by a leading <code>www.</code> label.</p>
+<p><strong>Example: <code>/.well-known/ames-ai.txt</code>:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a># Notice
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a># This file provides a site-level AMES declaration for automated systems. Page-level AMES declarations control where present. Where no valid page-level AMES declaration is present, the AMES-Policy in this file states the publisher&#39;s site-level default.
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>#
@@ -833,15 +828,15 @@
 <p><code>data-notice</code> is used only in the <code>custom</code> state, where it may carry an optional absolute URL pointing to the publisher's terms. It is not used in tuple state.</p>
 <p>The site-level declaration is not linked from the page. It is found by convention at the fixed <code>/.well-known/ames-ai.txt</code> path. See Section 5.1.</p>
 <p>Zone-level overrides travel on the source element as <code>data-ames-policy</code>, for example <code>data-ames-policy="1/0/0/0"</code>.</p>
-<p>A <code>permissions</code> block in an <code>.ax.md</code> file and the <code>ames-policy</code> declaration in the source <code>&lt;head&gt;</code> express the same page-level permission state and must agree.</p>
+<p>A <code>permissions</code> block in an <code>.ax.md</code> file and the <code>ames-policy</code> declaration in the source <code>&lt;head&gt;</code> express the same page-level permission state and must agree. Maintaining agreement between the canonical source page and the translation file is the publisher's burden. A consuming system may rely on whichever declaration it retrieves.</p>
 <h3 id="62-other-discovery-mechanisms">6.2 Other Discovery Mechanisms<a class="headerlink" href="#62-other-discovery-mechanisms" title="Permanent link">&para;</a></h3>
 <p><strong>Sitemap injection (recommended).</strong> <code>.ax.md</code> URLs are listed alongside their HTML counterparts in <code>sitemap.xml</code>, each with its own <code>&lt;lastmod&gt;</code>.</p>
 <p><strong>LLM hinting (informational).</strong> Publishers may list AMES URLs in <code>llms.txt</code> with explicit Markdown links.</p>
 <h2 id="7-reserved-extensions">7. Reserved Extensions<a class="headerlink" href="#7-reserved-extensions" title="Permanent link">&para;</a></h2>
 <p>The following extensions are reserved in AMES 0.9. They are named but not specified, and are dormant in this version.</p>
 <ul>
-<li><strong><code>.ax.json</code></strong> — JSON serialization of the agentic exchange document. AMES 0.9 specifies the Markdown serialization only. The <code>.ax.json</code> suffix and <code>application/ames+json</code> MIME type are reserved.</li>
-<li><strong><code>content_integrity</code></strong> (manifest block) — Reserved for cryptographic content verification, including fingerprinting, normalization, and verification status.</li>
+<li><strong><code>.ax.json</code></strong>: JSON serialization of the agentic exchange document. AMES 0.9 specifies the Markdown serialization only. The <code>.ax.json</code> suffix and <code>application/ames+json</code> MIME type are reserved.</li>
+<li><strong><code>content_integrity</code></strong> (manifest block): Reserved for cryptographic content verification, including fingerprinting, normalization, and permission verification status.</li>
 </ul>
 <h2 id="8-worked-example">8. Worked Example<a class="headerlink" href="#8-worked-example" title="Permanent link">&para;</a></h2>
 <p>A complete HTML page and its <code>.ax.md</code> translation. Catchlight is fictional. The page permits indexing and ephemeral retrieval and reserves store and train (<code>1/1/0/0</code>); the comments zone, carrying content the publisher does not own, reserves ephemeral as well (<code>1/0/0/0</code>).</p>
