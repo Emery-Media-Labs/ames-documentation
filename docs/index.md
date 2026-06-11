@@ -1,6 +1,6 @@
-# AMES Technical Specification — Version 0.9 (RFC)
+# AMES Technical Specification: Version 0.9 (RFC)
 
-**06/05/2026**
+**06/10/2026**
 
 > **Status:** v0.9 RFC. Stable enough for implementation and feedback. Breaking changes before 1.0 will be clearly marked.
 
@@ -30,9 +30,9 @@ A publisher may also use the AMES permissions infrastructure for pages that do n
 
 ## 3. Manifest
 
-The AMES manifest is organized into six defined blocks. Blocks 1 through 3 are required. Blocks 4 through 6 are optional. The ordering of blocks and any character limits are normative. The blocks and fields defined in this section are the complete set of valid AMES manifest fields for the `.ax.md` document. Implementations must not introduce additional fields.
+The AMES manifest is organized into six defined blocks. Blocks 1 through 3 are required. Blocks 4 through 6 are optional. The ordering of blocks and any character limits are normative. The blocks and fields defined in this section are the complete set of valid AMES manifest fields for the `.ax.md` document for this version. Implementations must not introduce additional fields.
 
-### 3.1 Block 1 — Page Identity (Required)
+### 3.1 Block 1: Page Identity (Required)
 
 `ames_version` (String): Always `"0.9"` for this version.
 
@@ -48,7 +48,7 @@ The AMES manifest is organized into six defined blocks. Blocks 1 through 3 are r
 
 `date_modified` (String, Optional): ISO 8601 last-modified date.
 
-### 3.2 Block 2 — Permissions (Required)
+### 3.2 Block 2: Permissions (Required)
 
 A permissions declaration is the publisher's machine-readable statement of which uses of its content by automated systems are permitted or reserved. Publishers must state the permissions under which the page may be used by a consuming system. This may be done by using the AMES native permissions fields described below, or by using the designation `custom` and pointing to the governing permissions regime.
 
@@ -105,7 +105,7 @@ permissions: custom https://example.com/terms
 
 The value is read as a single string split on the first whitespace: the first token is the keyword `custom`, and any remainder is an optional pointer to the governing terms, which must be an absolute URL. The pointer is the only permitted supplement; free text is not valid. AMES does not retrieve, interpret, validate, or standardize the resource the pointer identifies.
 
-### 3.3 Block 3 — Content (Required)
+### 3.3 Block 3: Content (Required)
 
 The Content block identifies the zone or zones that constitute the substantive content of the source page. This block distinguishes the primary body of the work from navigation, chrome, advertising, comments, recommendation modules, related-content regions, and other non-substantive page elements.
 
@@ -119,21 +119,21 @@ Array, such as `["hero", "practice-areas"]`: All elements matching each declared
 
 The declared content zone or zones must correspond to the substantive content translated in the zoned Markdown body. The Content block identifies the source content region; it must not introduce, summarize, replace, expand, or editorially alter the source content.
 
-`content.dynamic_dom` (Boolean, Optional): Defaults to `false`. Set to `true` when client-side scripts alter the structural container sequence of the declared content zone after the initial server response, so that the translated body is a representative capture of the zone rather than a frame-exact match.
+`content.dynamic_dom` (Boolean, Optional): Defaults to `false`. Set to `true` when client-side scripts alter the structural container sequence of the declared content zone after the initial server response. This flag does not alter what the translated body represents; structural parity is evaluated per Section 4. The flag is an advisory signal that the manifested page may differ structurally from the static source.
 
-#### 3.4 Block 4 — Topic Signals (Optional)
+### 3.4 Block 4 : Topic Signals (Optional)
 
 - `topic_signals.intended_audience` (String, max 160 chars): The intended reader or use case.
 - `topic_signals.core_topics` (Array of Strings, max 8 items, max 40 chars each): Primary subject areas.
 
-#### 3.5 Block 5 — Visual Register (Optional)
+### 3.5 Block 5: Visual Register (Optional)
 
 - `visual_register.logo_url` (String): Absolute URL to primary logo.
 - `visual_register.colors` (Array, max 3 hex values): Primary, secondary, and accent colors in order of prominence.
 - `visual_register.typography` (String, max 150 chars): Type choices, weight, and typographic character.
 - `visual_register.visual_direction` (String, max 300 chars): Imagery style and overall visual character.
 
-#### 3.6 Block 6 — Key Media (Optional)
+### 3.6 Block 6: Key Media (Optional)
 
 Identifies media essential to a machine reader's understanding of the page, declared under the top-level `media` key as a list of items. Decorative imagery is omitted.
 
@@ -217,7 +217,7 @@ Because the site-level declaration is discovered independently of any page-level
 
 - `AMES-Version` (Required): Always `0.9` for this version.
 - `AMES-Publisher` (Required): The organization responsible for the domain.
-- `AMES-Domain` (Required): The domain governed by the declaration. This field self-identifies the declaration when the file travels apart from its location.
+- `AMES-Domain` (Required): The host governed by the declaration, such as `catchlightmag.com`. This field self-identifies the declaration when the file travels apart from its location.
 - `AMES-Policy` (Required): Site-wide permission state, expressed as a four-position tuple or `custom`, per Section 3.
 - `AMES-Positions` (Required in tuple state): The tuple legend; in this version, exactly `index/ephemeral/store/train`.
 - `AMES-Values` (Required in tuple state): The value legend; `1=allow, 0=deny`.
@@ -226,7 +226,9 @@ Because the site-level declaration is discovered independently of any page-level
 
 The fields defined in this section are the complete set of valid fields for the site-level declaration file. Implementations must not introduce additional site-level fields.
 
-**Example — `/.well-known/ames-ai.txt`:**
+**Scope.** A site-level declaration governs only the host from which it is retrieved. A declaration retrieved from `https://catchlightmag.com/.well-known/ames-ai.txt` does not govern `https://blog.catchlightmag.com` or any other host, and a declaration on one host does not extend to its subdomains or to its parent registrable domain. A host requiring a site-level declaration serves its own file at its own `/.well-known/ames-ai.txt` path. A site-level declaration is valid only where its `AMES-Domain` value matches the host from which it was retrieved; a host matches where it is identical to the `AMES-Domain` value or differs from it only by a leading `www.` label.
+
+**Example: `/.well-known/ames-ai.txt`:**
 
 ```text
 # Notice
@@ -302,7 +304,7 @@ The site-level declaration is not linked from the page. It is found by conventio
 
 Zone-level overrides travel on the source element as `data-ames-policy`, for example `data-ames-policy="1/0/0/0"`.
 
-A `permissions` block in an `.ax.md` file and the `ames-policy` declaration in the source `<head>` express the same page-level permission state and must agree.
+A `permissions` block in an `.ax.md` file and the `ames-policy` declaration in the source `<head>` express the same page-level permission state and must agree. Maintaining agreement between the canonical source page and the translation file is the publisher's burden. A consuming system may rely on whichever declaration it retrieves.
 
 ### 6.2 Other Discovery Mechanisms
 
@@ -314,8 +316,8 @@ A `permissions` block in an `.ax.md` file and the `ames-policy` declaration in t
 
 The following extensions are reserved in AMES 0.9. They are named but not specified, and are dormant in this version.
 
-- **`.ax.json`** — JSON serialization of the agentic exchange document. AMES 0.9 specifies the Markdown serialization only. The `.ax.json` suffix and `application/ames+json` MIME type are reserved.
-- **`content_integrity`** (manifest block) — Reserved for cryptographic content verification, including fingerprinting, normalization, and verification status.
+- **`.ax.json`**: JSON serialization of the agentic exchange document. AMES 0.9 specifies the Markdown serialization only. The `.ax.json` suffix and `application/ames+json` MIME type are reserved.
+- **`content_integrity`** (manifest block): Reserved for cryptographic content verification, including fingerprinting, normalization, and permission verification status.
 
 ## 8. Worked Example
 
